@@ -2,15 +2,12 @@ version: '3.8'
 
 services:
   cupsd:
-#    image: docker.1ms.run/olbat/cupsd:latest
+#    image: olbat/cupsd:latest
     image: cups-mp280:latest
     container_name: cupsd
     restart: unless-stopped
     network_mode: host
     privileged: true
-    environment:
-      - USER_UID=1026
-      - USER_GID=100
     volumes:
       - ./cupsd.conf:/etc/cups/cupsd.conf
       - ./spool:/var/spool/cups
